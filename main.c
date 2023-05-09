@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * main - program that performs simple math operations
+ * main - Interpreter for Monty ByteCodes files
  * @argc: number of arguments (command line)
  * @argv: array that stores arguments (command line)
  * Return: 0
@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
 
 	if (argc != 4)
 	{
-		printf("Error\n");
-		exit(98);
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
 
 	num1 = atoi(argv[1]);
