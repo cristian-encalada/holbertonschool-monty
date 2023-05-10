@@ -8,8 +8,9 @@
 /* C standard lib headers */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
+#include <string.h>		/* to use strcmp */
+#include <stddef.h>		/* to use NULL macro*/
+#include <ctype.h>		/* to use isdigit*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

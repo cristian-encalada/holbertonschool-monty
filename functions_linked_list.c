@@ -8,8 +8,8 @@
 */
 /**
  * add_node - adds a node to the beginning of a stack_t stack
- * @stack: stack head
- * @n: number for the new node
+ * @head: pointer to the stack head
+ * @n: input number for the new node
  *
  * Return: newly created node, if creation fails, the
  * function will return NULL.
