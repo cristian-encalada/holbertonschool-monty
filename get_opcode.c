@@ -1,25 +1,45 @@
 #include "monty.h"
 
 /**
- * get_op_func - selects the correct function to perform
- *	the operation asked by the user
- * @s: operator passed as argument
- * Return: A pointer to the function that corresponds
- *	to the operator given as a parameter.
+ * get_opcode - selects the correct opcode to perform
+ *	the operation read in the file
+ * @stack: pointer to the stack
+ * @str: input string for comparison
+ * @line_cnt: number of lines in the file
+ * Return: void
  */
-int (*get_op_func(char *s))(int, int)
+/*int (*get_op_func(char *s))(int, int)*/
+void get_opcode(stack_t **stack, char *str, unsigned int line_cnt)
 {
-	op_t ops[] = {
-		{"+", op_add},
-		{NULL, NULL}
-	};
 	int i = 0;
 
-	while (ops[i].op != NULL)
-	{/* strcmp returns 0 if strings are equal */
-		if (strcmp(ops[i].op, s) == 0)
-			return (ops[i].f);
-	i++;
+/*
+*	op_t ops[] = {
+*			{"+", op_add},
+*			{NULL, NULL}
+*		};
+*/
+	instruction_t op[] = {
+		{"push", push},
+		{NULL, NULL}
+	};
+
+	/*while (ops[i].op != NULL)*/
+	while (op[i].opcode)
+	{
+		/*
+*		if (strcmp(ops[i].op, s) == 0)
+*			return (ops[i].f);
+*		i++;
+		*/
+		if (strcmp(op[i].opcode, str) == 0)
+		{
+			op[i].f(stack, line_cnt);
+			return; /* if a match is found, run the function */
+		}
+		i++;
 	}
-	return (NULL);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_cnt, str);
+	exit(EXIT_FAILURE);
+	/*return (NULL);*/
 }
