@@ -8,25 +8,31 @@
  */
 ssize_t read_file(const char *filename)
 {
-	FILE *fp;
+	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
 
 	if (filename == NULL)
-		return (0);
-
-	fp = fopen(filename, "r");
-	if (fp == NULL)
-		exit(EXIT_FAILURE);
-
-	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		printf("Retrieved line of length %zu:\n", read);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
+
+	file = fopen(filename, "r");
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
+
+	while ((read = getline(&line, &len, file)) != -1)
+	{
+		printf("Retrieved line of length %lu:\n", read);
 		printf("%s", line);
 	}
 
-	fclose(fp);
+	fclose(file);
 	if (line)
 		free(line);
 	exit(EXIT_SUCCESS);
