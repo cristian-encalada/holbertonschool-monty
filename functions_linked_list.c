@@ -7,12 +7,11 @@
 * }
 */
 /**
- * add_node - adds a node to the beginning of a stack_t stack
- * @head: pointer to the stack head
- * @n: input number for the new node
+ * add_node - adds a new node to the beginning of a stack_t stack
+ * @head: pointer to the stack stack_t
+ * @n: input integer
  *
- * Return: newly created node, if creation fails, the
- * function will return NULL.
+ * Return: the address of the new element, or NULL if it failed
  */
 stack_t *add_node(stack_t **head, const int n)
 {
