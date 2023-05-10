@@ -20,7 +20,5 @@ int main(int argc, char *argv[])
 	n = read_file(argv[1]);
 	printf("\n(printed chars: %li)\n", n);
 
-	/*	printf("%d\n", get_op_func(operator)(num1, num2)); */
-
 	return (0);
 }

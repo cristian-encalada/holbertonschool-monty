@@ -1,11 +1,5 @@
 #include "monty.h"
 
-/*
-* int op_add(int a, int b)
-* {
-*	return (a + b);
-* }
-*/
 /**
  * add_node - adds a new node to the beginning of a stack_t stack
  * @head: pointer to the stack stack_t
@@ -34,4 +28,43 @@ stack_t *add_node(stack_t **head, const int n)
 	*head = new;
 
 	return (new);
+}
+
+/**
+ * delete_node - deletes node at end
+ * @head: head of the list
+ */
+void delete_node(stack_t **head)
+{
+	stack_t *aux = NULL;
+
+	aux = *head;
+	if (aux->next == NULL)
+	{
+		*head = NULL;
+		free(aux);
+	}
+	else
+	{
+		*head = aux->next;
+		(*head)->prev = NULL;
+		free(aux);
+	}
+}
+
+/**
+ * free_dlist - frees a doubly linked list
+ * @head: pointer to head of list
+ */
+void free_dlist(stack_t **head)
+{
+	if (!head)
+		return;
+
+	while (*head && (*head)->next)
+	{
+		*head = (*head)->next;
+		free((*head)->prev);
+	}
+	free(*head);
 }

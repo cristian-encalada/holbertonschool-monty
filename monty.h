@@ -47,18 +47,19 @@ typedef struct instruction_s
 } instruction_t;
 
 /* functions in functions_opcodes.c */
-/*int op_add(int a, int b);*/
-stack_t *add_node(stack_t **head, const int n);
 void push(stack_t **stack, unsigned int line_cnt);
 
 
-
 /* funtions in get_opcode.c */
-/* int (*get_op_func(char *s))(int, int); */
 void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
 
 /* functions in functions_files.c */
 ssize_t read_file(const char *filename);
+
+/* functions in functions_linked_list.c */
+stack_t *add_node(stack_t **head, const int n);
+void delete_node(stack_t **head);
+void free_dlist(stack_t **head);
 
 #endif /* _MONTY_H_ */
