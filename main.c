@@ -1,5 +1,5 @@
 #include "monty.h"
-
+global_t global;
 /**
  * main - Interpreter for Monty ByteCodes files
  * @argc: number of arguments
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	stack_t *stack = NULL;
 
 	check_args(argc, argv);
-	read_line(&stack);
+	read_lines(&stack);
 
 	free(global.lineptr);
 	free_stack(stack);

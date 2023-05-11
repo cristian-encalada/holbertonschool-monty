@@ -13,7 +13,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		error_handle(stack, line_number, 2);
+		error_handler(stack, line_number, 2);
 
 	new->n = global.data;
 	new->next = *stack;
@@ -26,15 +26,22 @@ void push(stack_t **stack, unsigned int line_number)
 /**
  * pall - prints all the values on the stack, starting from the top
  * @stack: double pointer to the first node of the stack
- * @line_number: the line number in the file
+ * @line_number: number of line in the bytecode file
  *
  * Return: void
  */
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void) line_number;
-	print_stack(*stack);
+	stack_t *current;
+	(void)line_number;
+
+	current = *stack;
+	while (current)
+	{
+		printf("%i\n", current->n);
+		current = current->next;
+	}
 }
 
 /**
@@ -60,20 +67,19 @@ void delete_node(stack_t **head)
 }
 
 /**
- * free_dlist - frees a doubly linked list
- * @head: pointer to head of list
+ * free_stack - frees a stack_t stack (list)
+ * @stack: pointer to the first node of the list
  */
-void free_dlist(stack_t **head)
+void free_stack(stack_t *stack)
 {
-	if (!head)
-		return;
+	stack_t *current;
 
-	while (*head && (*head)->next)
+	while (stack)
 	{
-		*head = (*head)->next;
-		free((*head)->prev);
+		current = stack;
+		stack = stack->next;
+		free(current);
 	}
-	free(*head);
 }
 
 

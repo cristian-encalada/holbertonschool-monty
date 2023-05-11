@@ -52,20 +52,23 @@ typedef struct global_s
 	char *lineptr, *token;
 } global_t;
 
-extern globals_t global;
+extern global_t global;
 
 
 /* functions_opcodes.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void delete_node(stack_t **head);
-void free_dlist(stack_t **head);
+void free_stack(stack_t *stack);
 
 /* get_opcode.c */
-void opcode(stack_t **stack, char *str, unsigned int line_cnt);
+void get_opcode(stack_t **stack, unsigned int line_number);
 
-
-/* functions_files.c */
-ssize_t read_file(const char *filename);
+/* monty_logic.c */
+void check_args(int argc, char *argv[]);
+void read_lines(stack_t **stack);
+void tokenize_line(stack_t **stack, unsigned int line_number);
+void check_num(stack_t **stack, unsigned int line_number);
+void error_handler(stack_t **stack, unsigned int line_number, int error_type);
 
 #endif /* _MONTY_H_ */

@@ -2,31 +2,31 @@
 
 /**
  * get_opcode - selects the correct opcode to perform
- *				the operation read in the file
- * @stack: pointer to the stack
- * @str: input string for comparison
- * @line_cnt: number of lines in the file
+ *				the operation read in the bytecode file
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
  *
  * Return: void
  */
-void get_opcode(stack_t **stack, char *str, unsigned int line_cnt)
+void get_opcode(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
-	instruction_t op[] = {
+	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
 	};
 
-	for (i = 0; op[i].opcode; i++)
+	for (i = 0; opcodes[i].opcode; i++)
 	{
-		if (strcmp(op[i].opcode, str) == 0)
+		if (!strcmp(global.token, opcodes[i].opcode))
 		{
-			op[i].f(stack, line_cnt);
-			break; /* if a match is found, run the function */
+			global.token = strtok(NULL, " \n");
+			opcodes[i].f(stack, line_number);
+			break;
 		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_cnt, str);
-	exit(EXIT_FAILURE);
+	if (opcodes[i].opcode == NULL)
+		error_handler(stack, line_number, 1);
 }
