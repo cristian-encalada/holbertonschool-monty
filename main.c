@@ -3,22 +3,20 @@
 /**
  * main - Interpreter for Monty ByteCodes files
  * @argc: number of arguments
- * @argv: array that stores arguments
- * Return: 0
+ * @argv: pointer to an array of arguments (strings)
+ *
+ * Return: EXIT_SUCCESS
  */
 int main(int argc, char *argv[])
 {
-	(void) argc;
-	ssize_t n;
+	stack_t *stack = NULL;
 
-	if (argc != 2)
-	{
-		dprintf(2, "USAGE: %s file\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
+	check_args(argc, argv);
+	read_line(&stack);
 
-	n = read_file(argv[1]);
-	printf("\n(printed chars: %li)\n", n);
+	free(global.lineptr);
+	free_stack(stack);
+	fclose(global.bytecodes);
 
-	return (0);
+	return (EXIT_SUCCESS);
 }

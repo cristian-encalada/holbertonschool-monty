@@ -1,16 +1,11 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-/*
- * Description: Header file containing prototypes for all functions
- */
-
 /* C standard lib headers */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>		/* to use strcmp */
 #include <stddef.h>		/* to use NULL macro*/
-#include <ctype.h>		/* to use isdigit*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -23,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -38,28 +33,39 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
-/*
-	char *op;
-	int (*f)(int a, int b);
-*/
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* functions in functions_opcodes.c */
-void push(stack_t **stack, unsigned int line_cnt);
+
+/**
+ * struct globals_s - struct contains global variables.
+ * @data: value to initialize nodes.
+ * @fp: a file pointer.
+ * @lineptr: pointer to a dynamic buffer.
+ * @token: a pointer to the next token.
+*/
+typedef struct global_s
+{
+	int data;
+	FILE *bytecodes;
+	char *lineptr, *token;
+} global_t;
+
+extern globals_t global;
 
 
-/* funtions in get_opcode.c */
+/* functions_opcodes.c */
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void delete_node(stack_t **head);
+void free_dlist(stack_t **head);
+
+/* get_opcode.c */
 void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
 
-/* functions in functions_files.c */
+/* functions_files.c */
 ssize_t read_file(const char *filename);
-
-/* functions in functions_linked_list.c */
-stack_t *add_node(stack_t **head, const int n);
-void delete_node(stack_t **head);
-void free_dlist(stack_t **head);
 
 #endif /* _MONTY_H_ */
