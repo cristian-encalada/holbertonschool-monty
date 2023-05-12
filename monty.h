@@ -2,10 +2,10 @@
 #define _MONTY_H_
 
 /* C standard lib headers */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>		/* to use strcmp */
-#include <stddef.h>		/* to use NULL macro*/
+#include <stdio.h>		/* to use fopen, fclose, getline, printf, fprintf */
+#include <stdlib.h>		/* to use malloc, free, atoi, exit */
+#include <string.h>		/* to use strcmp, strtok */
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -61,6 +61,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 
