@@ -39,11 +39,11 @@ typedef struct instruction_s
 
 
 /**
- * struct globals_s - struct contains global variables.
- * @data: value to initialize nodes.
- * @fp: a file pointer.
- * @lineptr: pointer to a dynamic buffer.
- * @token: a pointer to the next token.
+ * struct globals_s - struct contains global variables
+ * @data: value to initialize nodes
+ * @bytecodes: a pointer to the file containing the bytecodes
+ * @lineptr: lineptr to be used in getline
+ * @token: a pointer to the next token (opcode)
 */
 typedef struct global_s
 {
@@ -58,6 +58,7 @@ extern global_t global;
 /* functions_opcodes.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void delete_node(stack_t **head);
 void free_stack(stack_t *stack);

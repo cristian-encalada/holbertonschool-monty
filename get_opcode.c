@@ -15,6 +15,8 @@ void get_opcode(stack_t **stack, unsigned int line_number)
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 

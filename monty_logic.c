@@ -28,13 +28,13 @@ void check_args(int argc, char *argv[])
  */
 void read_lines(stack_t **stack)
 {
-	int len;
+	int read;
 	unsigned int line_number;
 	size_t n;
 
-	len = line_number = n = 0;
+	read = line_number = n = 0;
 
-	while ((len = getline(&global.lineptr, &n, global.bytecodes)) != EOF)
+	while ((read = getline(&global.lineptr, &n, global.bytecodes)) != EOF)
 	{
 		line_number++;
 		tokenize_line(stack, line_number);
@@ -81,7 +81,7 @@ void check_num(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
-	for (i = 0; global.token[i]; ++i)
+	for (i = 0; global.token[i]; i++)
 	{
 		if (i == 0 && global.token[0] == '-')
 			i++;
@@ -105,6 +105,7 @@ void error_handler(stack_t **stack, unsigned int line_number, int error_type)
 	else if (error_type == 2)
 		fprintf(stderr, "Error: malloc failed\n");
 	else if (error_type == 3)
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 	free(global.lineptr);
 	free_stack(*stack);
 	fclose(global.bytecodes);

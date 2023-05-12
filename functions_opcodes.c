@@ -44,19 +44,18 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
-
 /**
- * nop - The opcode nop doesn’t do anything
+ * pint - prints the value at the top of the stack
  * @stack: double pointer to the first node of the stack
  * @line_number: number of line in the bytecode file
  *
  * Return: void
  */
-
-void nop(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
-		(void)stack;
-		(void)line_number;
+	if (*stack == NULL)
+		error_handler(stack, line_number, 3);
+	printf("%d\n", (*stack)->n);
 }
 
 /**
