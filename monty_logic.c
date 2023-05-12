@@ -108,6 +108,8 @@ void error_handler(stack_t **stack, unsigned int line_number, int error_type)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 	else if (error_type == 4)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+	else if (error_type == 5)
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 	free(global.lineptr);
 	free_stack(*stack);
 	fclose(global.bytecodes);
