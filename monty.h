@@ -59,8 +59,8 @@ extern global_t global;
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void delete_node(stack_t **head);
 void free_stack(stack_t *stack);
 
 /* get_opcode.c */

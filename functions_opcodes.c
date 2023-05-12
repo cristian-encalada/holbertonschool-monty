@@ -59,25 +59,25 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * delete_node - deletes node at end
- * @head: head of the list
+ * pop - removes the top element of the stack.
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
+ *
+ * Return: void
  */
-void delete_node(stack_t **head)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux = NULL;
 
-	aux = *head;
-	if (aux->next == NULL)
-	{
-		*head = NULL;
-		free(aux);
-	}
-	else
-	{
-		*head = aux->next;
-		(*head)->prev = NULL;
-		free(aux);
-	}
+	if (*stack == NULL)
+		error_handler(stack, line_number, 4);
+	aux = *stack;
+
+
+	*stack = aux->next;
+	free(aux);
+	if (*stack)
+		(*stack)->prev = NULL;
 }
 
 /**
