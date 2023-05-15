@@ -79,7 +79,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack
+ * division - divides the second top element of the stack
  *				by the top element of the stack
  * @stack: double pointer to the first node of the stack
  * @line_number: number of line in the bytecode file
