@@ -93,7 +93,7 @@ void division(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handler(stack, line_number, 8);
 
-	if ((*stack)->next == 0)
+	if ((*stack)->n == 0)
 		error_handler(stack, line_number, 9);
 
 	aux = *stack;
