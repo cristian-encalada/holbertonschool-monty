@@ -120,6 +120,8 @@ void error_handler(stack_t **stack, unsigned int line_number, int error_type)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 	else if (error_type == 10)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+	else if (error_type == 11)
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 	free(global.lineptr);
 	free_stack(*stack);
 	fclose(global.bytecodes);

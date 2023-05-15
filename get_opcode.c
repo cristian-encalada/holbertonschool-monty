@@ -23,6 +23,7 @@ void get_opcode(stack_t **stack, unsigned int line_number)
 		{"sub", sub},
 		{"div", division},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
