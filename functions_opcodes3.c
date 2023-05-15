@@ -59,5 +59,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 		error_handler(stack, line_number, 13);
+	if ((*stack)->n < 64 || (*stack)->n > 127)
+		error_handler(stack, line_number, 12);
 	printf("%c\n", (*stack)->n);
 }
