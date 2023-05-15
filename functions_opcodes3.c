@@ -59,7 +59,38 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 		error_handler(stack, line_number, 13);
-	if ((*stack)->n < 64 || (*stack)->n > 127)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 		error_handler(stack, line_number, 12);
 	printf("%c\n", (*stack)->n);
+}
+
+/**
+ * pstr - print the string starting at the top of the stack
+ *		followed by a new line
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
+ *
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	char str[1024];
+	stack_t *current = *stack;
+	int i = 0;
+
+	(void) line_number;
+	if (*stack == NULL)
+	{
+		putchar('\n');
+		return;
+	}
+	while (current != NULL && current->n > 0 && current->n < 127)
+	{
+		str[i] = current->n;
+		current = current->next;
+		i++;
+	}
+	str[i] = '\0';
+
+	printf("%s\n", str);
 }
