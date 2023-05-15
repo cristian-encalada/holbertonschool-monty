@@ -21,6 +21,7 @@ void get_opcode(stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", division},
 		{NULL, NULL}
 	};
 
