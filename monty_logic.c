@@ -59,21 +59,24 @@ void tokenize_line(stack_t **stack, unsigned int line_number)
 		if (global.token == NULL)
 			return;
 	}
-	if (!strcmp(global.token, "push"))
+	else
 	{
-		global.token = strtok(NULL, " \n");
-		if (global.token)
+		if (!strcmp(global.token, "push"))
 		{
-			check_num(stack, line_number);
-			global.data = atoi(global.token);
-			push(stack, line_number);
-			return;
+			global.token = strtok(NULL, " \n");
+			if (global.token)
+			{
+				check_num(stack, line_number);
+				global.data = atoi(global.token);
+				push(stack, line_number);
+				return;
+			}
+			else
+				error_handler(stack, line_number, 0);
 		}
-		else
-			error_handler(stack, line_number, 0);
-	}
 
-	get_opcode(stack, line_number);
+		get_opcode(stack, line_number);
+	}
 }
 
 /**
