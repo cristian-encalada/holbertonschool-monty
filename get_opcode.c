@@ -31,9 +31,8 @@ void get_opcode(stack_t **stack, unsigned int line_number)
 	{
 		if (!strcmp(global.token, opcodes[i].opcode))
 		{
-			global.token = strtok(NULL, " \n");
 			opcodes[i].f(stack, line_number);
-			break;
+				break;
 		}
 	}
 	if (opcodes[i].opcode == NULL)
