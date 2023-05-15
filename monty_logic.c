@@ -51,11 +51,14 @@ void read_lines(stack_t **stack)
 void tokenize_line(stack_t **stack, unsigned int line_number)
 {
 	global.token = strtok(global.lineptr, " \n");
-	if (global.token[0] == '#')
-		return;
 	if (global.token == NULL)
 		return;
-
+	if (global.token[0] == '#')
+	{	/* Skip the '#' character and tokenize the rest of the line */
+		global.token = strtok(NULL, "\n");
+		if (global.token == NULL)
+			return;
+	}
 	if (!strcmp(global.token, "push"))
 	{
 		global.token = strtok(NULL, " \n");
