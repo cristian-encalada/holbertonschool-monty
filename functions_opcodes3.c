@@ -47,3 +47,17 @@ void mod(stack_t **stack, unsigned int line_number)
 	free(aux);
 	(*stack)->prev = NULL;
 }
+
+/**
+ * pchar - prints the char at the top of the stack, followed by a new line
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
+ *
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(stack, line_number, 13);
+	printf("%c\n", (*stack)->n);
+}

@@ -126,6 +126,10 @@ void error_handler(stack_t **stack, unsigned int line_number, int error_type)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 	else if (error_type == 11)
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+	else if (error_type == 12)
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+	else if (error_type == 13)
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 	free(global.lineptr);
 	free_stack(*stack);
 	fclose(global.bytecodes);
