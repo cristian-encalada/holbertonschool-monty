@@ -13,7 +13,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	stack_t *aux;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		error_handler(stack, line_number, 6);
+		error_handler(stack, line_number, 10);
 	aux = *stack;
 	*stack = (*stack)->next;
 
