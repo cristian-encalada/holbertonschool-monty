@@ -50,6 +50,8 @@ void read_lines(stack_t **stack)
  */
 void tokenize_line(stack_t **stack, unsigned int line_number)
 {
+	bool is_stack = true;	/* by default, push into stack */
+
 	global.token = strtok(global.lineptr, " \n");
 	if (global.token == NULL)
 		return;
@@ -59,6 +61,10 @@ void tokenize_line(stack_t **stack, unsigned int line_number)
 		if (global.token == NULL)
 			return;
 	}
+	else if (!strcmp(global.token, "stack"))
+		is_stack = true;
+	else if (!strcmp(global.token, "queue"))
+		is_stack = false;
 	else
 	{
 		if (!strcmp(global.token, "push"))
@@ -68,7 +74,10 @@ void tokenize_line(stack_t **stack, unsigned int line_number)
 			{
 				check_num(stack, line_number);
 				global.data = atoi(global.token);
-				push(stack, line_number);
+				if (is_stack == true)
+					push(stack, line_number);
+				else
+					push_queue(stack, line_number);
 				return;
 			}
 			else

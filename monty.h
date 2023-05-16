@@ -5,7 +5,7 @@
 #include <stdio.h>		/* to use fopen, fclose, getline, printf, fprintf */
 #include <stdlib.h>		/* to use malloc, free, atoi, exit */
 #include <string.h>		/* to use strcmp, strtok */
-
+#include <stdbool.h>	/* to use bool data type */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -74,6 +74,9 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
+
+/* functions_opcodes4.c */
+void push_queue(stack_t **stack, unsigned int line_number);
 
 /* get_opcode.c */
 void get_opcode(stack_t **stack, unsigned int line_number);
