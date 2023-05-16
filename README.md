@@ -100,11 +100,17 @@ The project file structure is organized as follows:
 |[monty.h](./monty.h)|Contains prototypes of functions spread across all files, as well as structures used.|
 |[main.c](./main.c)|Contains he entry for the program.|
 |[monty_logic.c](./monty_logic.c)|Contains functions called by the main file.|
-|[get_opcode.c](./get_opcode.c)|Holds the corresponding function to select the proper opcode|
+|[get_opcode.c](./get_opcode.c)|Holds the corresponding function to select the proper opcode.|
 |[function_opcodes.c](./functions_opcodes.c)|Contains functions for push, pall, pint and pop opcodes.|
-|[function_opcodes2.c](./functions_opcodes2.c)|Contains functions for nop, add, swap, sub and div opcodes|
-|[function_opcodes3.c](./functions_opcodes3.c)|Contains functions for mul, mod, pchar, pstr and rotl opcodes|
-|[function_opcodes4.c](./functions_opcodes4.c)|Contains functions for rotr opcode and a helper function push_queue|
+|[function_opcodes2.c](./functions_opcodes2.c)|Contains functions for nop, add, swap, sub and div opcodes.|
+|[function_opcodes3.c](./functions_opcodes3.c)|Contains functions for mul, mod, pchar, pstr and rotl opcodes.|
+|[function_opcodes4.c](./functions_opcodes4.c)|Contains functions for rotr opcode and a helper function push_queue.|
+
+Aditionally, there are 2 directories:
+|Directory|Content|
+|--|--|
+|[bytecodes](./bytecodes/)|Contains all testing bytecodes used in the Monty Interpreter.|
+|[bf](./bf/)|Contains advanced tasks related to [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) programming language.|
 
 ## Mandatory Tasks
 
@@ -688,6 +694,74 @@ pall
 11111
 ```
 __Note__: Currently our program has an issue printing values after switching to `queue` mode, all other opcodes are working as expected.
+
+### 16. Brainf*ck
+
+Write a Brainf*ck script that prints `School`, followed by a new line.
+
+- All your Brainf*ck files should be stored inside the `bf` sub directory
+- You can install the bf interpreter to test your code: sudo apt-get install bf
+- Read:
+  - [Brainf*ck](https://en.wikipedia.org/wiki/Brainfuck)
+  - [How does the Brainf*ck work?](https://stackoverflow.com/questions/16836860/how-does-the-brainfuck-hello-world-actually-work)
+
+__Example:__
+
+```sh
+julien@ubuntu:~/monty/bf$ bf 1000-school.bf 
+School
+julien@ubuntu:~/monty/bf$ 
+```
+
+Check file: [1000-school.bf](./bf/1000-school.bf)
+
+### 17. Add two digits
+
+Add two digits given by the user.
+
+- Read the two digits from stdin, add them, and print the result
+- The total of the two digits with be one digit-long (<10)
+
+__Example:__
+
+```sh
+julien@ubuntu:~/monty/bf$ bf ./1001-add.bf
+81
+9julien@ubuntu:~/monty/bf$
+```
+
+Check file: [1001-add.bf](./bf/1001-add.bf)
+
+### 18. Multiplication
+
+Multiply two digits given by the user.
+
+- Read the two digits from stdin, multiply them, and print the result
+- The result of the multiplication will be one digit-long (<10)
+
+__Example:__
+
+```sh
+julien@ubuntu:~/monty/bf$ bf 1002-mul.bf
+24
+8julien@ubuntu:~/monty/bf$
+```
+Check file: [1002-mul.bf](./bf/1002-mul.bf)
+
+### 19. Multiplication level up
+
+Multiply two digits given by the user.
+- Read the two digits from stdin, multiply them, and print the result, followed by a new line
+
+__Example:__
+
+```sh
+julien@ubuntu:~/monty/bf$ bf 1003-mul.bf 
+77
+49
+julien@ubuntu:~/monty/bf$ 
+```
+Check file: [1003-mul.bf](./bf/1003-mul.bf)
 
 ## Authors
 
