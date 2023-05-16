@@ -14,18 +14,20 @@ void rotr(stack_t **stack, unsigned int line_number)
 
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		stack_t *top = *stack;
-		stack_t *second_top = top->next;
-		stack_t *last = *stack;
+	stack_t *last = *stack;
+	stack_t *second_last = *stack;
 
-		while (last->next != NULL)	/* traverse stack until last element */
-			last = last->next;
+	while (last->next != NULL) /* traverse stack until last element */
+	last = last->next;
 
-		last->next = top;
-		top->prev = last;
-		*stack = second_top;
-		second_top->prev = NULL;	/* disconnect second_top from the previous node */
-		top->next = NULL;			/* disconnect top from the next node */
+	while (second_last->next != last)
+	second_last = second_last->next;
+
+	last->next = *stack;
+	(*stack)->prev = last;
+	*stack = last;
+	second_last->next = NULL; /* disconnect second_last from the next node */
+	last->prev = NULL; /* disconnect last from the prev node */
 	}
 }
 
