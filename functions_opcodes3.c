@@ -94,3 +94,33 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	printf("%s\n", str);
 }
+
+/**
+ * rotl - rotates the stack to the top
+ *		The top element of the stack becomes the last one,
+ *		and the second top element of the stack becomes the first one
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
+ *
+ * Return: void
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	(void) line_number;
+
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		stack_t *top = *stack;
+		stack_t *second_top = top->next;
+		stack_t *last = *stack;
+
+		while (last->next != NULL)	/* traverse stack until last element */
+			last = last->next;
+
+		last->next = top;
+		top->prev = last;
+		*stack = second_top;
+		second_top->prev = NULL;	/* disconnect second_top from the previous node */
+		top->next = NULL;			/* disconnect top from the next node */
+	}
+}
