@@ -77,6 +77,7 @@ void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 
 /* functions_opcodes4.c */
+void rotr(stack_t **stack, unsigned int line_number);
 void push_queue(stack_t **stack, unsigned int line_number);
 
 /* get_opcode.c */

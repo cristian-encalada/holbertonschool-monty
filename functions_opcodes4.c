@@ -1,6 +1,35 @@
 #include "monty.h"
 
 /**
+ * rotr - rotates the stack to the bottom
+ *		The last element of the stack becomes the top element of the stack
+ * @stack: double pointer to the first node of the stack
+ * @line_number: number of line in the bytecode file
+ *
+ * Return: void
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	(void) line_number;
+
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		stack_t *top = *stack;
+		stack_t *second_top = top->next;
+		stack_t *last = *stack;
+
+		while (last->next != NULL)	/* traverse stack until last element */
+			last = last->next;
+
+		last->next = top;
+		top->prev = last;
+		*stack = second_top;
+		second_top->prev = NULL;	/* disconnect second_top from the previous node */
+		top->next = NULL;			/* disconnect top from the next node */
+	}
+}
+
+/**
  * push_queue - Add a new node at the end of a linked list
  * @stack: Pointer to pointer of first node
  * @line_number: Current line number
